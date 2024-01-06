@@ -1,4 +1,13 @@
+import { cardList } from "../../data";
 import Column from "../Column/Column";
+
+const statusList = [
+    "Без статуса",
+    "Нужно сделать",
+    "В работе",
+    "Тестирование",
+    "Готово",
+];
 
 function Main() {
     return (
@@ -6,11 +15,13 @@ function Main() {
             <div className="container">
                 <div className="main__block">
                     <div className="main__content">
-                        <Column title={"Без статуса"}></Column>
-                        <Column title={"Нужно сделать"}></Column>
-                        <Column title={"В работе"}></Column>
-                        <Column title={"Тестирование"}></Column>
-                        <Column title={"Готово"}></Column>
+                        {statusList.map((item) => (
+                            <Column 
+                                key={item} 
+                                title={item}
+                                cardList = {cardList.filter((card) => card.status === item)}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
