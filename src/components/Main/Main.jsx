@@ -8,19 +8,24 @@ const statusList = [
     "Готово",
 ];
 
-function Main({cardList}) {
+function Main({cardList, isLoaded}) {
     return (
         <main className="main">
             <div className="container">
                 <div className="main__block">
                     <div className="main__content">
-                        {statusList.map((item) => (
-                            <Column 
-                                key={item} 
-                                title={item}
-                                cardList = {cardList.filter((card) => card.status === item)}
-                            />
-                        ))}
+
+                        {
+                            isLoaded ? "Данные загружаются" : statusList.map((item) => (
+                                <Column 
+                                    key={item} 
+                                    title={item}
+                                    cardList = {cardList.filter((card) => card.status === item)}
+                                />
+                            ))
+                        }
+
+
                     </div>
                 </div>
             </div>
