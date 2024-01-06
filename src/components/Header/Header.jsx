@@ -1,5 +1,5 @@
 import { useState } from "react";
-function Header() {
+function Header({addCard}) {
     const [isOpen, setIsOpen] = useState(false);
 
     function toggleOpen() {
@@ -21,8 +21,8 @@ function Header() {
                         </a>
                     </div>
                     <nav className="header__nav">
-                        <button className="header__btn-main-new _hover01" id="btnMainNew">
-                            <a href="#popNewCard">Создать новую задачу</a>
+                        <button className="header__btn-main-new _hover01" id="btnMainNew" onClick={addCard}>
+                           Создать новую задачу
                         </button>
                         <a className="header__user _hover02" onClick={toggleOpen}>
                             Ivan Ivanov
