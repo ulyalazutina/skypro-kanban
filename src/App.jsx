@@ -7,6 +7,7 @@ import PopExit from './components/PopExit/PopExit'
 import PopNewCard from './components/PopNewCard/PopNewCard'
 import Wrapper from './components/Wrapper/Wrapper'
 import { cardList } from './data'
+import { GlobalStyle } from './Global.styled'
 
 function App() {
   const [cards, setCards] = useState(cardList);
@@ -32,6 +33,8 @@ function App() {
   }
 
   return (
+    <>
+    <GlobalStyle />
     <Wrapper> 
       <PopExit />
       <PopNewCard />
@@ -39,6 +42,7 @@ function App() {
       <Header addCard={addCard}/>
       <Main isLoaded={isLoaded} cardList={cards}/>
     </Wrapper>
+    </>
   ) 
 }
 
