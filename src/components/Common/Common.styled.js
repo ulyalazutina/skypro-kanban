@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { breakpoints } from "../../lib/breakpoints";
 
 export const Container = styled.div`
@@ -10,4 +10,27 @@ export const Container = styled.div`
     width: 100%;
     padding: 0 16px;
   }
-`; 
+`;
+
+export const hover01 = css`
+  &:hover {
+    background-color: #33399b;
+  }
+`;
+
+export const hover02 = css`
+  &:hover {
+    color: #33399b;
+    &::after {
+      border-left-color: #33399b;
+      border-bottom-color: #33399b;
+    }
+  }
+`;
+
+export const hover03 = css`
+  &:hover {
+    background-color: #33399b;
+    color: #ffffff;
+  }
+`;

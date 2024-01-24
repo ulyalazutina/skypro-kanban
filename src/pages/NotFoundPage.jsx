@@ -3,6 +3,9 @@ import { appRoutes } from "../lib/appRoutes";
 
 export default function NotFoundPage() {
     return (
-        <><p> Страницы не существует </p><Link to={appRoutes.HOME}> Вернуться на главную </Link></>
+        <div className="notFoundWrap">
+        <p className="notFoundText"> Страницы не существует </p>
+        <Link to={appRoutes.HOME}> Вернуться на главную </Link>
+        </div>
     )
 }

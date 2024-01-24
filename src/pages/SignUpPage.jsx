@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { appRoutes } from "../lib/appRoutes";
+
 export default function SignUpPage() {
     return (
         <div className="wrapper">
@@ -37,7 +40,7 @@ export default function SignUpPage() {
                             </button>
                             <div className="modal__form-group">
                                 <p>
-                                    Уже есть аккаунт? <a href="signin.html">Войдите здесь</a>
+                                    Уже есть аккаунт? <Link to={appRoutes.SIGN_IN}>Войдите здесь</Link>
                                 </p>
                             </div>
                         </form>

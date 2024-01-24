@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container } from "../Common/Common.styled";
-import { HeaderBlock, HeaderNav, HeaderWrapper, PopUserSetMail, PopUserSetName, PopUserSetTheme, PopUserSetThemeText } from "./Header.styled";
-import { Link } from "react-router-dom";
+import { Checkbox, HeaderBlock, HeaderBtnExit, HeaderButton, HeaderNav, HeaderPopUp, HeaderUser, HeaderWrapper, PopUserSetMail, PopUserSetName, PopUserSetTheme, PopUserSetThemeText, StyledLink } from "./Header.styled";
+// import { Link } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
 function Header({addCard}) {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,27 +25,21 @@ function Header({addCard}) {
                         </a>
                     </div>
                     <HeaderNav>
-                        <button className="header__btn-main-new _hover01" id="btnMainNew" onClick={addCard}>
-                           Создать новую задачу
-                        </button>
-                        <a className="header__user _hover02" onClick={toggleOpen}>
-                            Ivan Ivanov
-                        </a>
+                        <HeaderButton id="btnMainNew" onClick={addCard}> Создать новую задачу </HeaderButton>
+                        <HeaderUser onClick={toggleOpen}>Ivan Ivanov</HeaderUser>
                         {isOpen && (
-                            <div
-                                className="header__pop-user-set pop-user-set"
-                                id="user-set-target"
-                            >
+                            <HeaderPopUp id="user-set-target">
                                 <PopUserSetName>Ivan Ivanov</PopUserSetName>
                                 <PopUserSetMail>ivan.ivanov@gmail.com</PopUserSetMail>
                                 <PopUserSetTheme>
                                 <PopUserSetThemeText>Темная тема</PopUserSetThemeText>
-                                    <input type="checkbox" className="checkbox" name="checkbox" />
+                                    {/* <input type="checkbox" className="checkbox" name="checkbox" /> */}
+                                    <Checkbox></Checkbox>
                                 </PopUserSetTheme>
-                                <button type="button" className="_hover03">
-                                <Link to={appRoutes.EXIT}>Выйти</Link>
-                                </button>
-                            </div>
+                                <HeaderBtnExit>
+                                <StyledLink to={appRoutes.EXIT}>Выйти</StyledLink>
+                                </HeaderBtnExit>
+                            </HeaderPopUp>
                         )}
                     </HeaderNav>
                     </HeaderBlock>

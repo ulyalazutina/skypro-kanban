@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import {
+    CardBtn,
+    CardBtnLine,
     CardContent,
     CardDate,
     CardDateText,
@@ -35,11 +37,11 @@ function Card({ name, theme, date }) {
                         <CardThemeText>{theme}</CardThemeText>
                     </CardTheme>
                     <Link to={appRoutes.CARD}>
-                        <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                        </div>
+                        <CardBtn>
+                            <CardBtnLine />
+                            <CardBtnLine />
+                            <CardBtnLine />
+                        </CardBtn>
                     </Link>
                 </CardGroup>
                 <CardContent>
