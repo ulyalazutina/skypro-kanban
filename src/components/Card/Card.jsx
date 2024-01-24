@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
     CardContent,
     CardDate,
@@ -9,6 +10,7 @@ import {
     CardWrapper,
     CardsItem,
 } from "./Card.styled";
+import { appRoutes } from "../../lib/appRoutes";
 
 function Card({ name, theme, date }) {
     let color;
@@ -22,7 +24,7 @@ function Card({ name, theme, date }) {
         case "Copywriting":
             color = "_purple";
             break;
-       default:
+        default:
             color = "_gray";
     }
     return (
@@ -32,13 +34,13 @@ function Card({ name, theme, date }) {
                     <CardTheme $themeColor={color}>
                         <CardThemeText>{theme}</CardThemeText>
                     </CardTheme>
-                    <a href="#popBrowse" target="_self">
+                    <Link to={appRoutes.CARD}>
                         <div className="card__btn">
                             <div />
                             <div />
                             <div />
                         </div>
-                    </a>
+                    </Link>
                 </CardGroup>
                 <CardContent>
                     <a href="" target="_blank">
