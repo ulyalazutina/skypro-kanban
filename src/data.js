@@ -27,4 +27,11 @@ export const cardList = [
         date: "30.10.23",
         status: "Готово",
     },
+    {
+        id: 5,
+        theme: "Нет темы",
+        title: "Новая задача",
+        date: "30.10.23",
+        status: "В работе",
+    },
 ]

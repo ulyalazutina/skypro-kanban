@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Container } from "../Common/Common.styled";
+import { HeaderBlock, HeaderNav, HeaderWrapper, PopUserSetMail, PopUserSetName, PopUserSetTheme, PopUserSetThemeText } from "./Header.styled";
 function Header({addCard}) {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -7,9 +9,9 @@ function Header({addCard}) {
     }
 
     return (
-        <header className="header">
-            <div className="container">
-                <div className="header__block">
+        <HeaderWrapper>
+            <Container>
+                <HeaderBlock>
                     <div className="header__logo _show _light">
                         <a href="" target="_self">
                             <img src="images/logo.png" alt="logo" />
@@ -20,7 +22,7 @@ function Header({addCard}) {
                             <img src="images/logo_dark.png" alt="logo" />
                         </a>
                     </div>
-                    <nav className="header__nav">
+                    <HeaderNav>
                         <button className="header__btn-main-new _hover01" id="btnMainNew" onClick={addCard}>
                            Создать новую задачу
                         </button>
@@ -32,21 +34,21 @@ function Header({addCard}) {
                                 className="header__pop-user-set pop-user-set"
                                 id="user-set-target"
                             >
-                                <p className="pop-user-set__name">Ivan Ivanov</p>
-                                <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                                <div className="pop-user-set__theme">
-                                    <p>Темная тема</p>
+                                <PopUserSetName>Ivan Ivanov</PopUserSetName>
+                                <PopUserSetMail>ivan.ivanov@gmail.com</PopUserSetMail>
+                                <PopUserSetTheme>
+                                <PopUserSetThemeText>Темная тема</PopUserSetThemeText>
                                     <input type="checkbox" className="checkbox" name="checkbox" />
-                                </div>
+                                </PopUserSetTheme>
                                 <button type="button" className="_hover03">
                                     <a href="#popExit">Выйти</a>
                                 </button>
                             </div>
                         )}
-                    </nav>
-                </div>
-            </div>
-        </header>
+                    </HeaderNav>
+                    </HeaderBlock>
+                </Container>
+                </HeaderWrapper>
     );
 }
 
