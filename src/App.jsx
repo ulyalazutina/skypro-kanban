@@ -21,11 +21,11 @@ function App() {
           <Route path={appRoutes.HOME} element={<HomePage />}>
             <Route path={appRoutes.CARD} element={<CardPage />} />
           </Route>
-          <Route path={appRoutes.EXIT} element={<ExitPage />} />
       </Route>
       <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />}></Route>
       <Route path={appRoutes.SIGN_IN} element={<SignInPage />}></Route>
       <Route path={appRoutes.SIGN_UP} element={<SignUpPage />}></Route>
+      <Route path={appRoutes.EXIT} element={<ExitPage />} />
     </Routes >
     </>
   );
