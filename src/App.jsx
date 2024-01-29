@@ -1,49 +1,34 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Header from './components/Header/Header'
-import Main from './components/Main/Main'
-import PopBrowse from './components/PopBrowse/PopBrowse'
-import PopExit from './components/PopExit/PopExit'
-import PopNewCard from './components/PopNewCard/PopNewCard'
-import Wrapper from './components/Wrapper/Wrapper'
-import { cardList } from './data'
-import { GlobalStyle } from './Global.styled'
+import "./App.css";
+import { GlobalStyle } from "./Global.styled";
+import { Route, Routes } from "react-router-dom";
+import { appRoutes } from "./lib/appRoutes";
+import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import SignInPage from "./pages/SignInPage/SignInPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
+import CardPage from "./pages/CardPage";
+import ExitPage from "./pages/ExitPage";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
-  const [cards, setCards] = useState(cardList);
-  const [isLoaded, setIsLoaded] = useState(true);
-
-  useEffect(()=>{
-    setTimeout(() => {
-      setIsLoaded(false);
-    }, 1000);
-  },[])
-
-  function addCard() {
-    setCards([
-      ...cards,
-      {
-          id: cards.length + 1,
-          theme: "Copywriting",
-          title: "Новая задача",
-          date: "30.10.23",
-          status: "Без статуса",
-      }
-    ])
-  }
+  let user = true;
 
   return (
     <>
-    <GlobalStyle />
-    <Wrapper> 
-      <PopExit />
-      <PopNewCard />
-      <PopBrowse />
-      <Header addCard={addCard}/>
-      <Main isLoaded={isLoaded} cardList={cards}/>
-    </Wrapper>
+      <GlobalStyle />
+      <Routes>
+        <Route element={<PrivateRoute user={user} />}>
+          <Route path={appRoutes.HOME} element={<HomePage />}>
+            <Route path={appRoutes.CARD} element={<CardPage />} />
+          </Route>
+        </Route>
+        <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />}></Route>
+        <Route path={appRoutes.SIGN_IN} element={<SignInPage />}></Route>
+        <Route path={appRoutes.SIGN_UP} element={<SignUpPage />}></Route>
+        <Route path={appRoutes.EXIT} element={<ExitPage />} />
+      </Routes>
     </>
-  ) 
+  );
 }
 
-export default App
+export default App;
