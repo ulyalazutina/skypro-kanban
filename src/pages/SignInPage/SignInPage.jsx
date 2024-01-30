@@ -19,6 +19,8 @@ import { useNavigate } from "react-router";
 export default function SignInPage({ setUserData }) {
   let navigate = useNavigate();
 
+  const [loginError, setLoginError] = useState(null);
+
   const loginForm = {
     login: "",
     password: "",
@@ -28,7 +30,6 @@ export default function SignInPage({ setUserData }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     login(loginData)
       .then((response) => {
         console.log(response);
@@ -38,12 +39,11 @@ export default function SignInPage({ setUserData }) {
         navigate(appRoutes.HOME);
       })
       .catch((error) => {
-        console.warn(error);
+        setLoginError(error.message);
       });
   };
 
   const handleInputChange = (e) => {
-
     const { name, value } = e.target;
 
     setLoginData({
@@ -77,6 +77,7 @@ export default function SignInPage({ setUserData }) {
                 onChange={handleInputChange}
                 value={loginData.password}
               ></ModalInput>
+              {loginError ? <p style={{ color: "red" }}>{loginError}</p> : ""}
               <ModalBtnEnter id="btnEnter" onClick={handleLogin}>
                 Войти
                 {/* <ModalBtnEnterLink></ModalBtnEnterLink> */}

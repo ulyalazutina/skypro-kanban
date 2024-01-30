@@ -23,6 +23,8 @@ import { useNavigate } from "react-router";
 export default function SignUpPage({ setUserData }) {
   let navigate = useNavigate();
 
+  const [registError, setRegistrError] = useState(null);
+
   const registrForm = {
     name: "",
     login: "",
@@ -43,7 +45,7 @@ export default function SignUpPage({ setUserData }) {
         navigate(appRoutes.HOME)
       })
       .catch((error) => {
-        console.log(error);
+        setRegistrError(error.message);
       });
   };
 
@@ -89,6 +91,7 @@ export default function SignUpPage({ setUserData }) {
                 onChange={handleInputChange}
                 value={registrData.password}
               />
+              {registError ? <p style={{color: "red"}}>{registError}</p> : ""}
               <ModalEtnEignupEnt id="SignUpEnter" onClick={handleRegistr}>
                 {/* <ModalEtnEignupEntLink > */}
                 Зарегистрироваться

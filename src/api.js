@@ -10,6 +10,10 @@ export async function login({ login, password }) {
       password,
     }),
   });
+
+  if (response.status === 400) {
+    throw new Error("Неверный логин или пароль");
+  }
   const data = await response.json();
   return data;
 }
@@ -22,21 +26,29 @@ export async function getTasks({ token }) {
     },
   });
 
+  if (!response.ok) {
+    throw new Error("Ошибка сервера");
+  }
+
   const data = await response.json();
   return data;
 }
 
-export async function signUp({ name, login, password}) {
-    const response = await fetch(API_USER_URL, {
-        method: "POST",
-        body: JSON.stringify({
-            name,
-            login,
-            password,
-        }),
-    });
+export async function signUp({ name, login, password }) {
+  const response = await fetch(API_USER_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      name,
+      login,
+      password,
+    }),
+  });
 
-    const data = await response.json();
-    console.log(data);
-    return data;
+  if (response.status === 400) {
+    throw new Error("Пользователь с таким логином уже существует");
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
 }
