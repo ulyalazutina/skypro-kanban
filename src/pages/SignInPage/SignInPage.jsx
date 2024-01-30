@@ -30,9 +30,9 @@ export default function SignInPage({ setUserData }) {
     e.preventDefault();
 
     login(loginData)
-      .then((data) => {
-        console.log(data);
-        setUserData(data.user);
+      .then((response) => {
+        console.log(response);
+        setUserData(response.user);
       })
       .then(() => {
         navigate(appRoutes.HOME);

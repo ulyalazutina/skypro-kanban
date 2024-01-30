@@ -13,14 +13,13 @@ import { useState } from "react";
 
 function App() {
   const [userData, setUserData] = useState(null);
-  // let user = true;
 
   return (
     <>
       <GlobalStyle />
       <Routes>
         <Route element={<PrivateRoute user={userData} />}>
-          <Route path={appRoutes.HOME} element={<HomePage />}>
+          <Route path={appRoutes.HOME} element={<HomePage userData={userData} />}>
             <Route path={appRoutes.CARD} element={<CardPage />} />
           </Route>
         </Route>

@@ -6,16 +6,26 @@ import Main from "../components/Main/Main";
 // import PopNewCard from "../components/PopNewCard/PopNewCard";
 import Wrapper from "../components/Wrapper/Wrapper";
 import { Outlet } from "react-router";
-import { cardList } from "../data";
+// import { cardList } from "../data";
+import { getTasks } from "../api";
 
-export default function HomePage() {
-    const [cards, setCards] = useState(cardList);
+export default function HomePage({ userData }) {
+    const [cards, setCards] = useState(null);
     const [isLoaded, setIsLoaded] = useState(true);
   
     useEffect(() => {
-      setTimeout(() => {
+      getTasks({token: userData.token})
+      .then((data)=>{
+        console.log(data);
+        setCards(data.tasks); 
+        console.log(data.tasks)
+      })
+      .then(()=>{
         setIsLoaded(false);
-      }, 1000);
+      })
+      .catch((error) => {
+        console.warn(error);
+      })
     }, []);
   
     function addCard() {
