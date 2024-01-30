@@ -26,7 +26,7 @@ function App() {
         <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />}></Route>
         <Route path={appRoutes.SIGN_IN} element={<SignInPage setUserData={setUserData} />}></Route>
         <Route path={appRoutes.SIGN_UP} element={<SignUpPage setUserData={setUserData} />}></Route>
-        <Route path={appRoutes.EXIT} element={<ExitPage />} />
+        <Route path={appRoutes.EXIT} element={<ExitPage setUserData={setUserData} />} />
       </Routes>
     </>
   );
