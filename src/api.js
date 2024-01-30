@@ -25,3 +25,18 @@ export async function getTasks({ token }) {
   const data = await response.json();
   return data;
 }
+
+export async function signUp({ name, login, password}) {
+    const response = await fetch(API_USER_URL, {
+        method: "POST",
+        body: JSON.stringify({
+            name,
+            login,
+            password,
+        }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
