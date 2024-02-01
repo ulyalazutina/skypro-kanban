@@ -1382,3 +1382,9 @@ body {
 .notFoundText{
   /* font-size: 32px; */
 }
+.error {
+  color: #F02929;
+  text-align: center;
+  margin-top: 10%;
+  font-size: 32px;
+}
