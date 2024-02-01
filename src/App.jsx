@@ -9,24 +9,21 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import CardPage from "./pages/CardPage";
 import ExitPage from "./pages/ExitPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { useState } from "react";
 
 function App() {
-  const [userData, setUserData] = useState(null);
-
   return (
     <>
       <GlobalStyle />
       <Routes>
-        <Route element={<PrivateRoute user={userData} />}>
-          <Route path={appRoutes.HOME} element={<HomePage userData={userData} />}>
+        <Route element={<PrivateRoute  />}>
+          <Route path={appRoutes.HOME} element={<HomePage  />}>
             <Route path={appRoutes.CARD} element={<CardPage />} />
           </Route>
         </Route>
         <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />}></Route>
-        <Route path={appRoutes.SIGN_IN} element={<SignInPage setUserData={setUserData} />}></Route>
-        <Route path={appRoutes.SIGN_UP} element={<SignUpPage setUserData={setUserData} />}></Route>
-        <Route path={appRoutes.EXIT} element={<ExitPage setUserData={setUserData} />} />
+        <Route path={appRoutes.SIGN_IN} element={<SignInPage />}></Route>
+        <Route path={appRoutes.SIGN_UP} element={<SignUpPage />}></Route>
+        <Route path={appRoutes.EXIT} element={<ExitPage />} />
       </Routes>
     </>
   );

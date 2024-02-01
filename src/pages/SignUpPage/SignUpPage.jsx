@@ -18,10 +18,10 @@ import {
 } from "./SignUpPage.styled";
 import { signUp } from "../../api";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useUser } from "../../hooks/useUser";
 
-export default function SignUpPage({ setUserData }) {
-  let navigate = useNavigate();
+export default function SignUpPage() {
+  const {loginUser} = useUser();
 
   const [registError, setRegistrError] = useState(null);
 
@@ -39,10 +39,7 @@ export default function SignUpPage({ setUserData }) {
     signUp(registrData)
       .then((response) => {
         console.log(response);
-        setUserData(response.user);
-      })
-      .then(() => {
-        navigate(appRoutes.HOME)
+        loginUser(response.user);
       })
       .catch((error) => {
         setRegistrError(error.message);

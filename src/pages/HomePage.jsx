@@ -8,8 +8,10 @@ import Wrapper from "../components/Wrapper/Wrapper";
 import { Outlet } from "react-router";
 // import { cardList } from "../data";
 import { getTasks } from "../api";
+import { useUser } from "../hooks/useUser";
 
-export default function HomePage({ userData }) {
+export default function HomePage() {
+  const {userData} = useUser();
   const [cards, setCards] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
   const [tasksError, setTasksError] = useState(null);
