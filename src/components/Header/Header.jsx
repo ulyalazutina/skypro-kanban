@@ -3,6 +3,7 @@ import { Container } from "../Common/Common.styled";
 import { Checkbox, HeaderBlock, HeaderBtnExit, HeaderButton, HeaderNav, HeaderPopUp, HeaderUser, HeaderWrapper, PopUserSetMail, PopUserSetName, PopUserSetTheme, PopUserSetThemeText, StyledLink } from "./Header.styled";
 // import { Link } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
+import { Link } from "react-router-dom";
 function Header({addCard}) {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -25,7 +26,7 @@ function Header({addCard}) {
                         </a>
                     </div>
                     <HeaderNav>
-                        <HeaderButton id="btnMainNew" onClick={addCard}> Создать новую задачу </HeaderButton>
+                        <HeaderButton id="btnMainNew" onClick={addCard}> <Link to={appRoutes.NEW_CARD}> Создать новую задачу </Link></HeaderButton>
                         <HeaderUser onClick={toggleOpen}>Ivan Ivanov</HeaderUser>
                         {isOpen && (
                             <HeaderPopUp id="user-set-target">

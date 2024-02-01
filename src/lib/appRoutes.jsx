@@ -5,4 +5,5 @@ export const appRoutes = {
     SIGN_IN: "/signIn",
     CARD: "/card/:cardId",
     EXIT: "/exit",
+    NEW_CARD: "/newCard",
 };

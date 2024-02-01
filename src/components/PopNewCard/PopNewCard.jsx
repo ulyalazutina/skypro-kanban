@@ -1,4 +1,34 @@
+import { useState } from "react";
+import Calendar from "../Calendar/Calendar";
+
 function PopNewCard() {
+
+    const [selected, setSelected] = useState();
+
+
+    const [newTask, setNewTask] = useState({
+        title: "",
+        topic: "",
+        description: "",
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+
+        setNewTask({
+            ...newTask,
+            [name]: value,
+        });
+    }
+
+    const addCard = async () => {
+        let newCard = {
+            ...newTask,
+            data: selected
+        }
+        console.log(newCard);
+    }
+
     return (
         <div className="pop-new-card" id="popNewCard">
             <div className="pop-new-card__container">
@@ -19,9 +49,11 @@ function PopNewCard() {
                                         Название задачи
                                     </label>
                                     <input
+                                        value={newTask.title}
+                                        onChange={handleInputChange}
                                         className="form-new__input"
                                         type="text"
-                                        name="name"
+                                        name="title"
                                         id="formTitle"
                                         placeholder="Введите название задачи..."
                                     />
@@ -31,17 +63,19 @@ function PopNewCard() {
                                         Описание задачи
                                     </label>
                                     <textarea
+                                        value={newTask.description}
+                                        onChange={handleInputChange}
                                         className="form-new__area"
-                                        name="text"
+                                        name="description"
                                         id="textArea"
                                         placeholder="Введите описание задачи..."
-                                        defaultValue={""}
                                     />
                                 </div>
                             </form>
-                            <div className="pop-new-card__calendar calendar">
-                                <p className="calendar__ttl subttl">Даты</p>
-                                <div className="calendar__block">
+                            {/* <div className="pop-new-card__calendar calendar"> */}
+                                <Calendar selected={selected} setSelected={setSelected}/>
+                                {/* <p className="calendar__ttl subttl">Даты</p> */}
+                                {/* <div className="calendar__block">
                                     <div className="calendar__nav">
                                         <div className="calendar__month">Сентябрь 2023</div>
                                         <div className="nav__actions">
@@ -148,24 +182,27 @@ function PopNewCard() {
                                             <span className="date-control" />.
                                         </p>
                                     </div>
-                                </div>
-                            </div>
+                                </div> */}
+                            {/* </div> */}
                         </div>
                         <div className="pop-new-card__categories categories">
                             <p className="categories__p subttl">Категория</p>
                             <div className="categories__themes">
-                                <div className="categories__theme _orange _active-category">
-                                    <p className="_orange">Web Design</p>
-                                </div>
-                                <div className="categories__theme _green">
-                                    <p className="_green">Research</p>
-                                </div>
-                                <div className="categories__theme _purple">
-                                    <p className="_purple">Copywriting</p>
+                                <div className="prod_checbox">
+                                    <div className="radio-toolbar">
+                                        <input type="radio" id="radio1" name="topic" onChange={handleInputChange} value="Web Design" checked />
+                                        <label htmlFor="radio1">Web Design</label>
+
+                                        <input type="radio" id="radio2" name="topic" onChange={handleInputChange} value="Research" />
+                                        <label htmlFor="radio2">Research</label>
+
+                                        <input type="radio" id="radio3" name="topic" onChange={handleInputChange} value="Copywriting" />
+                                        <label htmlFor="radio3">Copywriting</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <button className="form-new__create _hover01" id="btnCreate">
+                        <button className="form-new__create _hover01" id="btnCreate" onClick={addCard}>
                             Создать задачу
                         </button>
                     </div>

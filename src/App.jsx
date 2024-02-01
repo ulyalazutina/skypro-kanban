@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import CardPage from "./pages/CardPage";
 import ExitPage from "./pages/ExitPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import NewCardPage from "./pages/NewCardPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path={appRoutes.HOME} element={<HomePage  />}>
             <Route path={appRoutes.CARD} element={<CardPage />} />
           </Route>
+          <Route path={appRoutes.NEW_CARD} element={<NewCardPage />} />
         </Route>
         <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />}></Route>
         <Route path={appRoutes.SIGN_IN} element={<SignInPage />}></Route>
