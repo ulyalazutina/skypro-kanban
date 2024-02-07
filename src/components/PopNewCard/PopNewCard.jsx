@@ -1,9 +1,13 @@
 import { useState } from "react";
 import Calendar from "../Calendar/Calendar";
 import { useUser } from "../../hooks/useUser";
-import { addTask } from "../../api";
+import { useCard } from "../../hooks/useCard";
+import { addTask, getTasks } from "../../api";
+import { Link } from "react-router-dom";
+import { appRoutes } from "../../lib/appRoutes";
 function PopNewCard() {
   const { userData } = useUser();
+  const { cardData, getCard, addCardContext } = useCard();
   const [selected, setSelected] = useState();
 
   const [newTask, setNewTask] = useState({
@@ -25,14 +29,18 @@ function PopNewCard() {
   const addCard = async () => {
     let newCard = {
       ...newTask,
-      data: selected,
+      date: selected,
+      token: userData.token,
     };
 
-    console.log(newCard);
+    console.log([...cardData, newCard]);
     console.log(newTask);
-    addTask({ token: userData.token, newCard }).then((data) => {
-      setNewTask(newCard);
+    addTask(newCard).then((data) => {
+      addCardContext();
       console.log(data);
+      getTasks({ token: userData.token }).then((response) => {
+        getCard(response.tasks);
+      });
     });
   };
 
@@ -42,9 +50,9 @@ function PopNewCard() {
         <div className="pop-new-card__block">
           <div className="pop-new-card__content">
             <h3 className="pop-new-card__ttl">Создание задачи</h3>
-            <a href="#" className="pop-new-card__close">
+            <Link to={appRoutes.HOME} className="pop-new-card__close">
               ✖
-            </a>
+            </Link>
             <div className="pop-new-card__wrap">
               <form
                 className="pop-new-card__form form-new"

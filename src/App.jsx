@@ -16,16 +16,16 @@ function App() {
     <>
       <GlobalStyle />
       <Routes>
-        <Route element={<PrivateRoute  />}>
-          <Route path={appRoutes.HOME} element={<HomePage  />}>
+        <Route element={<PrivateRoute />}>
+          <Route path={appRoutes.HOME} element={<HomePage />}>
             <Route path={appRoutes.CARD} element={<CardPage />} />
+            <Route path={appRoutes.NEW_CARD} element={<NewCardPage />} />
+            <Route path={appRoutes.EXIT} element={<ExitPage />} />
           </Route>
-          <Route path={appRoutes.NEW_CARD} element={<NewCardPage />} />
         </Route>
         <Route path={appRoutes.NOT_FOUND} element={<NotFoundPage />}></Route>
         <Route path={appRoutes.SIGN_IN} element={<SignInPage />}></Route>
         <Route path={appRoutes.SIGN_UP} element={<SignUpPage />}></Route>
-        <Route path={appRoutes.EXIT} element={<ExitPage />} />
       </Routes>
     </>
   );

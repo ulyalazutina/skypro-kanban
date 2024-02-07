@@ -8,17 +8,18 @@ import Wrapper from "../components/Wrapper/Wrapper";
 import { Outlet } from "react-router";
 import { getTasks } from "../api";
 import { useUser } from "../hooks/useUser";
+import { useCard } from "../hooks/useCard";
 
 export default function HomePage() {
   const { userData } = useUser();
-  const [cards, setCards] = useState(null);
+  const { cardData, getCard } = useCard();
   const [isLoaded, setIsLoaded] = useState(true);
   const [tasksError, setTasksError] = useState(null);
 
   useEffect(() => {
     getTasks({ token: userData.token })
-      .then((data) => {
-        setCards(data.tasks);
+      .then((response) => {
+        getCard(response.tasks);
       })
       .then(() => {
         setIsLoaded(false);
@@ -29,19 +30,8 @@ export default function HomePage() {
         }
       });
   }, []);
+  console.log(cardData);
 
-  // function addCard() {
-  //   setCards([
-  //     ...cards,
-  //     {
-  //       id: cards.length + 1,
-  //       theme: "Copywriting",
-  //       title: "Новая задача",
-  //       date: "30.10.23",
-  //       status: "Без статуса",
-  //     },
-  //   ]);
-  // }
   return (
     <>
       {tasksError ? (
@@ -52,7 +42,7 @@ export default function HomePage() {
           <Outlet />
           <Outlet />
           <Header />
-          <Main isLoaded={isLoaded} cardList={cards} />
+          <Main isLoaded={isLoaded} cardList={cardData} />
         </Wrapper>
       )}
     </>
