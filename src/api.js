@@ -52,3 +52,28 @@ export async function signUp({ name, login, password }) {
   console.log(data);
   return data;
 }
+
+export async function addTask({
+  token,
+  title,
+  topic,
+  status,
+  description,
+  date,
+}) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      title,
+      topic,
+      status,
+      description,
+      date,
+    }),
+  });
+  const data = response.json();
+  return data;
+}

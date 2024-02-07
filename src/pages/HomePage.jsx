@@ -6,12 +6,11 @@ import Main from "../components/Main/Main";
 // import PopNewCard from "../components/PopNewCard/PopNewCard";
 import Wrapper from "../components/Wrapper/Wrapper";
 import { Outlet } from "react-router";
-// import { cardList } from "../data";
 import { getTasks } from "../api";
 import { useUser } from "../hooks/useUser";
 
 export default function HomePage() {
-  const {userData} = useUser();
+  const { userData } = useUser();
   const [cards, setCards] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
   const [tasksError, setTasksError] = useState(null);
@@ -19,9 +18,7 @@ export default function HomePage() {
   useEffect(() => {
     getTasks({ token: userData.token })
       .then((data) => {
-        // console.log(data);
         setCards(data.tasks);
-        // console.log(data.tasks);
       })
       .then(() => {
         setIsLoaded(false);
@@ -33,18 +30,18 @@ export default function HomePage() {
       });
   }, []);
 
-  function addCard() {
-    setCards([
-      ...cards,
-      {
-        id: cards.length + 1,
-        theme: "Copywriting",
-        title: "Новая задача",
-        date: "30.10.23",
-        status: "Без статуса",
-      },
-    ]);
-  }
+  // function addCard() {
+  //   setCards([
+  //     ...cards,
+  //     {
+  //       id: cards.length + 1,
+  //       theme: "Copywriting",
+  //       title: "Новая задача",
+  //       date: "30.10.23",
+  //       status: "Без статуса",
+  //     },
+  //   ]);
+  // }
   return (
     <>
       {tasksError ? (
@@ -53,7 +50,8 @@ export default function HomePage() {
         <Wrapper>
           <Outlet />
           <Outlet />
-          <Header addCard={addCard} />
+          <Outlet />
+          <Header />
           <Main isLoaded={isLoaded} cardList={cards} />
         </Wrapper>
       )}
