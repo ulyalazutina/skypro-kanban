@@ -88,3 +88,28 @@ export async function deleteTask({ token, id }) {
   const data = response.json();
   return data;
 }
+
+export async function updateTask({
+  token,
+  id,
+  title,
+  topic,
+  status,
+  description,
+  date}) {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      title,
+      topic,
+      status,
+      description,
+      date,
+    }),
+  });
+  const data = response.json();
+  return data;
+}

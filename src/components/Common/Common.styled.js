@@ -148,3 +148,8 @@ export const ModalFormGroupLink = styled(Link)`
   line-height: 150%;
   letter-spacing: -0.14px;
 `;
+
+export const _orange = css`
+  background-color: #FFE4C2;
+  color: #FF6D00;
+`;
