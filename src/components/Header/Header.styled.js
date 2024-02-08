@@ -71,6 +71,17 @@ export const HeaderButton = styled.button`
   font-weight: 500;
   margin-right: 20px;
   ${hover01}
+  @media screen and (max-width: 495px) {
+    z-index: 3;
+    position: fixed;
+    left: 16px;
+    bottom: 30px;
+    top: auto;
+    width: calc(100vw - 32px);
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 0;
+  }
 `;
 
 export const HeaderButtonLink = styled(Link)`

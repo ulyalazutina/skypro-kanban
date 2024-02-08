@@ -12,6 +12,9 @@ export const PopBrowseWrap = styled.div`
   top: 0;
   left: 0;
   z-index: 7;
+  @media screen and (max-width: 660px) {
+    top: 70px;
+  }
 `;
 
 export const PopBrowseContainer = styled.div`
@@ -24,6 +27,10 @@ export const PopBrowseContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
+  @media screen and (max-width: 660px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
 `;
 
 export const PopBrowseBlock = styled.div`
@@ -36,6 +43,12 @@ export const PopBrowseBlock = styled.div`
   border-radius: 10px;
   border: 0.7px solid #d4dbe5;
   position: relative;
+  @media screen and (max-width: 660px) {
+    border-radius: 0;
+  }
+  @media screen and (max-width: 495px) {
+    padding: 20px 16px 32px;
+  }
 `;
 
 export const PopBrowseContent = styled.div`
@@ -125,6 +138,9 @@ export const PopBrowseWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  @media screen and (max-width: 660px) {
+    display: block;
+  }
 `;
 
 export const PopBrowseForm = styled.form`
@@ -132,6 +148,9 @@ export const PopBrowseForm = styled.form`
   width: 100%;
   display: block;
   margin-bottom: 20px;
+  @media screen and (max-width: 495px) {
+    max-width: 100%;
+  }
 `;
 
 export const FormBrowseBlock = styled.div`
@@ -166,6 +185,10 @@ export const FormBrowseArea = styled.textarea`
     color: #94a6be;
     letter-spacing: -0.14px;
   }
+  @media screen and (max-width: 495px) {
+    max-width: 100%;
+    height: 37px;
+  }
 `;
 
 export const PopBrowseBtnWrap = styled.div`
@@ -175,7 +198,11 @@ export const PopBrowseBtnWrap = styled.div`
   justify-content: space-between;
 `;
 
-export const BtnGroup = styled.div``;
+export const BtnGroup = styled.div`
+  @media screen and (max-width: 495px) {
+    width: 100%;
+  }
+`;
 
 export const BtnGroupButton = styled.button`
   margin-right: 8px;
@@ -187,6 +214,11 @@ export const BtnGroupButton = styled.button`
   outline: none;
   background: transparent;
   color: #565eef;
+  @media screen and (max-width: 495px) {
+    width: 100%;
+    height: 40px;
+    margin-right: 0px;
+  }
 `;
 
 export const BtnGroupText = styled.a`

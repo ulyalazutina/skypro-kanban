@@ -168,3 +168,18 @@ export const _gray = css`
   background: #94A6BE;
   color: #FFFFFF;
 `;
+
+export const _hide = css`
+  display: none;
+`;
+
+export const _dark = css`
+  display: none;
+`;
+
+export const Error = styled.p`
+  color: #F02929;
+  text-align: center;
+  margin-top: 10%;
+  font-size: 32px;
+`;

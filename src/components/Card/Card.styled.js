@@ -1,10 +1,22 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { themeStyles } from "../../lib/theme";
 import { breakpoints } from "../../lib/breakpoints";
 
+export const CardAnimation = keyframes`
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  100% {
+    height: auto;
+    opacity: 1;
+  }
+`;
+
 export const CardsItem = styled.div`
   padding: 5px;
-  animation-name: card-animation;
+  animation-name: ${CardAnimation};
   animation-duration: 500ms;
   animation-timing-function: linear;
 `;
@@ -22,7 +34,7 @@ export const CardWrapper = styled.div`
   @media screen and (max-width: ${breakpoints.xl}px) {
     width: 220px;
     height: 130px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -86,7 +98,7 @@ export const CardDateText = styled.p`
   margin-left: 6px;
   font-size: 10px;
   line-height: 13px;
-  color: #94A6BE;
+  color: #94a6be;
   letter-spacing: 0.2px;
 `;
 
@@ -94,7 +106,7 @@ export const CardBtnLine = styled.div`
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #94A6BE;
+  background-color: #94a6be;
 `;
 
 export const CardBtn = styled.div`
@@ -106,5 +118,3 @@ export const CardBtn = styled.div`
   padding: 2px;
   ${CardBtnLine};
 `;
-
-

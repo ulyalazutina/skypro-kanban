@@ -26,6 +26,9 @@ export const ModalEtnEignupEnt = styled.button`
   letter-spacing: -0.14px;
   color: #FFFFFF;
   ${hover01}
+  @media screen and (max-width: 375px) {
+    height: 40px;
+  }
 `;
 
 export const ModalEtnEignupEntLink = styled.a`
