@@ -12,9 +12,9 @@ import {
   CardWrapper,
   CardsItem,
 } from "./Card.styled";
-import { appRoutes } from "../../lib/appRoutes";
+// import { appRoutes } from "../../lib/appRoutes";
 
-function Card({ name, theme, date }) {
+function Card({ name, theme, date, cardId }) {
   let color;
   switch (theme) {
     case "Web Design":
@@ -36,7 +36,7 @@ function Card({ name, theme, date }) {
           <CardTheme $themeColor={color}>
             <CardThemeText>{theme}</CardThemeText>
           </CardTheme>
-          <Link to={appRoutes.CARD}>
+          <Link to={`/card/${cardId}`}>
             <CardBtn>
               <CardBtnLine />
               <CardBtnLine />

@@ -1,11 +1,17 @@
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { appRoutes } from "../../lib/appRoutes";
+
 function PopBrowse() {
+  let { cardId } = useParams();
+  console.log(cardId);
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
         <div className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи</h3>
+              <h3 className="pop-browse__ttl">Название задачи {cardId}</h3>
               <div className="categories__theme theme-top _orange _active-category">
                 <p className="_orange">Web Design</p>
               </div>
@@ -172,7 +178,7 @@ function PopBrowse() {
                 </button>
               </div>
               <button className="btn-browse__close _btn-bg _hover01">
-                <a href="#">Закрыть</a>
+                <Link to={appRoutes.HOME}>Закрыть</Link>
               </button>
             </div>
             <div className="pop-browse__btn-edit _hide">
