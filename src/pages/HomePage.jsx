@@ -30,7 +30,7 @@ export default function HomePage() {
         }
       });
   }, []);
-  console.log(cardData);
+  // console.log(cardData);
 
   return (
     <>

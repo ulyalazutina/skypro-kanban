@@ -37,18 +37,20 @@ import { useState } from "react";
 function PopBrowse() {
   let { cardId } = useParams();
   const { userData } = useUser();
-  const { deleteCardContext, cardData } = useCard();
+  const { deleteCardContext, cardData, updateCardContext } = useCard();
+  console.log(cardData);
 
   const cards = cardData.filter((card) => card._id === cardId);
+
   const [selected, setSelected] = useState(cards[0].date);
   const [changeCard, setChangeCard] = useState({
     status: cards[0].status,
-    date: cards[0].date,
-    title: cards[0].title,
-    topic: cards[0].topic,
-    description: cards[0].description,
+      date: cards[0].date,
+      title: cards[0].title,
+      topic: cards[0].topic,
+      description: cards[0].description,
   });
-  console.log(cards);
+  console.log(changeCard);
 
   const deleteCard = () => {
     deleteTask({ token: userData.token, id: cardId }).then((responseData) => {
@@ -63,7 +65,7 @@ function PopBrowse() {
       ...changeCard,
       [name]: value,
     });
-    // console.log(changeCard);
+    console.log(changeCard);
   };
 
   const updateCard = () => {
@@ -75,18 +77,18 @@ function PopBrowse() {
       topic: changeCard.topic,
       status: changeCard.status,
       description: changeCard.description,
-      date: changeCard.date,
+      date: selected,
     })
-      .then((responseData) => {
-        deleteCardContext(responseData.tasks);
-      })
       .then(() => {
-        console.log("изменено");
-      });
+        console.log(changeCard);
+      })
+      .then((response) => {
+        updateCardContext(response);
+      })
   };
 
   let color;
-  switch (cards[0].topic) {
+  switch (cards.topic) {
     case "Web Design":
       color = "_orange";
       break;
@@ -107,7 +109,7 @@ function PopBrowse() {
           <PopBrowseContent>
             <PopBrowseTopBlock>
               <PopBrowseTittle>{cards[0].title}</PopBrowseTittle>
-              <CategoriesTheme $themeColor={color}>
+              <CategoriesTheme $ThemeColor = {color}>
                 <CategoriesThemeText>{cards[0].topic}</CategoriesThemeText>
               </CategoriesTheme>
             </PopBrowseTopBlock>
@@ -173,8 +175,7 @@ function PopBrowse() {
               </StatusThemes>
             </Status>
             <PopBrowseWrapper>
-              <PopBrowseForm id="formBrowseCard"
-                action="#">
+              <PopBrowseForm id="formBrowseCard" action="#">
                 <FormBrowseBlock>
                   <Subtitle htmlFor="textArea01">Описание задачи</Subtitle>
                   <FormBrowseArea
@@ -186,7 +187,11 @@ function PopBrowse() {
                   />
                 </FormBrowseBlock>
               </PopBrowseForm>
-              <Calendar selected={selected} setSelected={setSelected} />
+              <Calendar
+              selected={selected}
+              setSelected={setSelected}
+              onChange={handleInputChange}
+              />
             </PopBrowseWrapper>
             <ThemeDownCategories>
               <p className="categories__p subttl">Категория</p>
