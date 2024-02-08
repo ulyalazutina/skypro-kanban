@@ -158,3 +158,8 @@ export const HeaderPopUp = styled.div`
 export const StyledLink = styled(Link)`
   color: #565eef;
 `;
+
+export const HeaderLogo = styled.div``;
+export const HeaderLogoImg = styled.img`
+  width: 85px;
+`;

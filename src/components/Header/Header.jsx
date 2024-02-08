@@ -6,6 +6,8 @@ import {
   HeaderBtnExit,
   HeaderButton,
   HeaderButtonLink,
+  HeaderLogo,
+  HeaderLogoImg,
   HeaderNav,
   HeaderPopUp,
   HeaderUser,
@@ -18,6 +20,7 @@ import {
 } from "./Header.styled";
 import { appRoutes } from "../../lib/appRoutes";
 import { useUser } from "../../hooks/useUser";
+import { Link } from "react-router-dom";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { userData } = useUser();
@@ -30,16 +33,16 @@ function Header() {
     <HeaderWrapper>
       <Container>
         <HeaderBlock>
-          <div className="header__logo _show _light">
-            <a href="" target="_self">
-              <img src="images/logo.png" alt="logo" />
-            </a>
-          </div>
-          <div className="header__logo _dark">
+          <HeaderLogo>
+            <Link to={appRoutes.HOME} >
+              <HeaderLogoImg src="images/logo.png" alt="logo" />
+            </Link>
+          </HeaderLogo>
+          {/* <div className="header__logo _dark">
             <a href="" target="_self">
               <img src="images/logo_dark.png" alt="logo" />
             </a>
-          </div>
+          </div> */}
           <HeaderNav>
             <HeaderButton id="btnMainNew">
               {" "}
@@ -55,7 +58,6 @@ function Header() {
                 <PopUserSetMail>{userData.login}</PopUserSetMail>
                 <PopUserSetTheme>
                   <PopUserSetThemeText>Темная тема</PopUserSetThemeText>
-                  {/* <input type="checkbox" className="checkbox" name="checkbox" /> */}
                   <Checkbox></Checkbox>
                 </PopUserSetTheme>
                 <HeaderBtnExit>

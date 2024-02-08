@@ -153,3 +153,18 @@ export const _orange = css`
   background-color: #FFE4C2;
   color: #FF6D00;
 `;
+
+export const _green = css`
+  background-color: #B4FDD1;
+  color: #06B16E;
+`;
+
+export const _purple = css`
+  background-color: #E9D4FF;
+  color: #9A48F1;
+`;
+
+export const _gray = css`
+  background: #94A6BE;
+  color: #FFFFFF;
+`;
