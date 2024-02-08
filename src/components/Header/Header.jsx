@@ -18,8 +18,10 @@ import {
 // import { Link } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
 import { Link } from "react-router-dom";
+import { useUser } from "../../hooks/useUser";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { userData } = useUser();
 
   function toggleOpen() {
     setIsOpen((prevValue) => !prevValue);
@@ -29,7 +31,7 @@ function Header() {
     <HeaderWrapper>
       <Container>
         <HeaderBlock>
-        <div className="header__logo _show _light">
+          <div className="header__logo _show _light">
             <a href="" target="_self">
               <img src="images/logo.png" alt="logo" />
             </a>
@@ -42,16 +44,13 @@ function Header() {
           <HeaderNav>
             <HeaderButton id="btnMainNew">
               {" "}
-              <Link to={appRoutes.NEW_CARD}>
-                {" "}
-                Создать новую задачу{" "}
-              </Link>           
-              </HeaderButton>
-            <HeaderUser onClick={toggleOpen}>Ivan Ivanov</HeaderUser>
+              <Link to={appRoutes.NEW_CARD}> Создать новую задачу </Link>
+            </HeaderButton>
+            <HeaderUser onClick={toggleOpen}>{userData.name}</HeaderUser>
             {isOpen && (
               <HeaderPopUp id="user-set-target">
-                <PopUserSetName>Ivan Ivanov</PopUserSetName>
-                <PopUserSetMail>ivan.ivanov@gmail.com</PopUserSetMail>
+                <PopUserSetName>{userData.name}</PopUserSetName>
+                <PopUserSetMail>{userData.login}</PopUserSetMail>
                 <PopUserSetTheme>
                   <PopUserSetThemeText>Темная тема</PopUserSetThemeText>
                   {/* <input type="checkbox" className="checkbox" name="checkbox" /> */}
