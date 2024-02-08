@@ -77,3 +77,14 @@ export async function addTask({
   const data = response.json();
   return data;
 }
+
+export async function deleteTask({ token, id }) {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = response.json();
+  return data;
+}

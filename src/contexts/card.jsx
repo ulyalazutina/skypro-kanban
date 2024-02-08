@@ -16,8 +16,13 @@ export function CardProvider({ children }) {
         navigate(appRoutes.HOME);
     };
 
+    const deleteCardContext = (task) => {
+        setCardData(task);
+        navigate(appRoutes.HOME);
+    }
+
     return (
-        <CardContext.Provider value={{ getCard, addCardContext, cardData, setCardData }}>
+        <CardContext.Provider value={{ getCard, addCardContext, cardData, setCardData, deleteCardContext }}>
             {children}
         </CardContext.Provider>
     );

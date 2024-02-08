@@ -1,10 +1,23 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
+import { deleteTask } from "../../api";
+import { useUser } from "../../hooks/useUser";
+import { useCard } from "../../hooks/useCard";
 
 function PopBrowse() {
   let { cardId } = useParams();
+  const { userData } = useUser();
+  const { deleteCardContext } = useCard();
   console.log(cardId);
+
+  const deleteCard = () => {
+    deleteTask({token: userData.token, id: cardId })
+    .then((responseData)=>{
+      deleteCardContext(responseData.tasks)
+    })
+  }
+
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
@@ -173,7 +186,7 @@ function PopBrowse() {
                 <button className="btn-browse__edit _btn-bor _hover03">
                   <a href="#">Редактировать задачу</a>
                 </button>
-                <button className="btn-browse__delete _btn-bor _hover03">
+                <button className="btn-browse__delete _btn-bor _hover03" onClick={deleteCard}>
                   <a href="#">Удалить задачу</a>
                 </button>
               </div>
