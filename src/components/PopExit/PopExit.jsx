@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import { appRoutes } from "../../lib/appRoutes";
 import {
   PopExitWrap,
@@ -9,19 +8,18 @@ import {
   PopExitForm,
   PopExitFormGroup,
   PopExitYes,
-  // PopExitYesLink,
   PopExitNo,
   PopExitNoLink,
 } from "./PopExit.styled";
+import { useUser } from "../../hooks/useUser";
 
-function PopExit({setUserData}) {
-  let navigate = useNavigate();
+function PopExit() {
+  const { logoutUser } = useUser();
 
-const logout = (e) => {
-  e.preventDefault();
-  setUserData(null);
-  navigate(appRoutes.SIGN_IN);
-}
+  const logout = (e) => {
+    e.preventDefault();
+    logoutUser();
+  };
 
   return (
     <PopExitWrap>
@@ -34,7 +32,7 @@ const logout = (e) => {
             <PopExitFormGroup>
               <PopExitYes id="exitYes" onClick={logout}>
                 {/* <PopExitYesLink to={appRoutes.SIGN_IN}> */}
-                  Да, выйти
+                Да, выйти
                 {/* </PopExitYesLink> */}
               </PopExitYes>
               <PopExitNo id="exitNo">

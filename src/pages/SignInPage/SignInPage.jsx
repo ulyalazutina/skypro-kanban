@@ -15,8 +15,10 @@ import { ModalBtnEnter, SignInContainer } from "./SignInPage.styled";
 import { login } from "../../api";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useUser } from "../../hooks/useUser";
 
-export default function SignInPage({ setUserData }) {
+export default function SignInPage() {
+  const {loginUser} = useUser();
   let navigate = useNavigate();
 
   const [loginError, setLoginError] = useState(null);
@@ -33,7 +35,7 @@ export default function SignInPage({ setUserData }) {
     login(loginData)
       .then((response) => {
         console.log(response);
-        setUserData(response.user);
+        loginUser(response.user);
       })
       .then(() => {
         navigate(appRoutes.HOME);
