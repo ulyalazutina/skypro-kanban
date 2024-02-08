@@ -14,6 +14,7 @@ function Column({ title, cardList }) {
             name={item.title}
             theme={item.topic}
             date={item.date}
+            cardId={item._id}
           />
         ))}
      </Cards>

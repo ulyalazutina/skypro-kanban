@@ -29,7 +29,7 @@ function Header() {
     <HeaderWrapper>
       <Container>
         <HeaderBlock>
-          <div className="header__logo _show _light">
+        <div className="header__logo _show _light">
             <a href="" target="_self">
               <img src="images/logo.png" alt="logo" />
             </a>
@@ -45,8 +45,8 @@ function Header() {
               <Link to={appRoutes.NEW_CARD}>
                 {" "}
                 Создать новую задачу{" "}
-              </Link>
-            </HeaderButton>
+              </Link>           
+              </HeaderButton>
             <HeaderUser onClick={toggleOpen}>Ivan Ivanov</HeaderUser>
             {isOpen && (
               <HeaderPopUp id="user-set-target">

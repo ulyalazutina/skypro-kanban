@@ -93,7 +93,7 @@ function PopNewCard() {
             <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
               <div className="categories__themes">
-{/* 1) Не работает чекбокс при нажатии на лэибл */}
+                {/* 1) Не работает чекбокс при нажатии на лэибл */}
                 <div className="categories__theme _orange _active-category">
                   <input
                     type="radio"
@@ -106,7 +106,7 @@ function PopNewCard() {
                     Web Design
                   </label>
                 </div>
-
+                
                 <div className="categories__theme _green">
                   <input
                     type="radio"
