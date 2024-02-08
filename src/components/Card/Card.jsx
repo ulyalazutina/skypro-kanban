@@ -45,9 +45,9 @@ function Card({ name, theme, date, cardId }) {
           </Link>
         </CardGroup>
         <CardContent>
-          <a href="" target="_blank">
-            <CardTitle>{name}</CardTitle>
-          </a>
+          {/* <a href="" target="_blank"> */}
+          <CardTitle>{name}</CardTitle>
+          {/* </a> */}
           <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"

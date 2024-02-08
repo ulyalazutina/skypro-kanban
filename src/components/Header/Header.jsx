@@ -5,6 +5,7 @@ import {
   HeaderBlock,
   HeaderBtnExit,
   HeaderButton,
+  HeaderButtonLink,
   HeaderNav,
   HeaderPopUp,
   HeaderUser,
@@ -15,9 +16,7 @@ import {
   PopUserSetThemeText,
   StyledLink,
 } from "./Header.styled";
-// import { Link } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
-import { Link } from "react-router-dom";
 import { useUser } from "../../hooks/useUser";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +43,10 @@ function Header() {
           <HeaderNav>
             <HeaderButton id="btnMainNew">
               {" "}
-              <Link to={appRoutes.NEW_CARD}> Создать новую задачу </Link>
+              <HeaderButtonLink to={appRoutes.NEW_CARD}>
+                {" "}
+                Создать новую задачу{" "}
+              </HeaderButtonLink>
             </HeaderButton>
             <HeaderUser onClick={toggleOpen}>{userData.name}</HeaderUser>
             {isOpen && (

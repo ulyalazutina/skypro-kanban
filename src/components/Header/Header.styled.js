@@ -73,6 +73,10 @@ export const HeaderButton = styled.button`
   ${hover01}
 `;
 
+export const HeaderButtonLink = styled(Link)`
+  color: white;
+`;
+
 export const HeaderUser = styled.a`
   height: 20px;
   display: flex;
@@ -118,8 +122,8 @@ export const Checkbox = styled.input.attrs({ type: "checkbox" })`
     background-color: #94a6be;
     transition: 0.5s;
   }
-  &:checked{
-    &::before{
+  &:checked {
+    &::before {
       left: 12px;
     }
   }
@@ -129,11 +133,11 @@ export const HeaderBtnExit = styled.button`
   width: 72px;
   height: 30px;
   background: transparent;
-  color: #565EEF;
+  color: #565eef;
   border-radius: 4px;
-  border: 1px solid #565EEF;
+  border: 1px solid #565eef;
   ${hover03}
-`; 
+`;
 
 export const HeaderPopUp = styled.div`
   display: block;
@@ -144,7 +148,7 @@ export const HeaderPopUp = styled.div`
   height: 205px;
   border-radius: 10px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
-  background: #FFF;
+  background: #fff;
   box-shadow: 0px 10px 39px 0px rgba(26, 56, 101, 0.21);
   padding: 34px;
   text-align: center;
@@ -152,5 +156,5 @@ export const HeaderPopUp = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-color: #565EEF;
+  color: #565eef;
 `;
