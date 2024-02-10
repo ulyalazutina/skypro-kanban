@@ -12,14 +12,14 @@ import { useCard } from "../hooks/useCard";
 
 export default function HomePage() {
   const { userData } = useUser();
-  const { cardData, getCard } = useCard();
+  const { cardData, updateCards} = useCard();
   const [isLoaded, setIsLoaded] = useState(true);
   const [tasksError, setTasksError] = useState(null);
 
   useEffect(() => {
     getTasks({ token: userData.token })
       .then((response) => {
-        getCard(response.tasks);
+        updateCards(response.tasks);
       })
       .then(() => {
         setIsLoaded(false);

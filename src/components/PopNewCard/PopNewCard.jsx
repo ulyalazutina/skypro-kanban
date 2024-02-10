@@ -29,11 +29,13 @@ import {
   PopNewCardWrapper,
   Subtitle,
 } from "./PopNewCard.styled";
+import { useNavigate } from "react-router";
 
 function PopNewCard() {
   const { userData } = useUser();
-  const { cardData, getCard, addCardContext } = useCard();
+  const { cardData, updateCards} = useCard();
   const [selected, setSelected] = useState();
+  let navigate = useNavigate();
 
   const [newTask, setNewTask] = useState({
     title: "",
@@ -61,11 +63,14 @@ function PopNewCard() {
 
     console.log([...cardData, newCard]);
     console.log(newTask);
-    addTask(newCard).then((data) => {
-      addCardContext();
+    addTask(newCard)
+    .then(()=>{
+      navigate(appRoutes.HOME);
+    })
+    .then((data) => {
       console.log(data);
       getTasks({ token: userData.token }).then((response) => {
-        getCard(response.tasks);
+        updateCards(response.tasks);
       });
     });
   };

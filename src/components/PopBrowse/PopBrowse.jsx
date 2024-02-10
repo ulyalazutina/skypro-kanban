@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { appRoutes } from "../../lib/appRoutes";
 import { deleteTask, updateTask } from "../../api";
 import { useUser } from "../../hooks/useUser";
@@ -37,7 +37,8 @@ import { useState } from "react";
 function PopBrowse() {
   let { cardId } = useParams();
   const { userData } = useUser();
-  const { deleteCardContext, cardData, updateCardContext } = useCard();
+  const { updateCards, cardData } = useCard();
+  let navigate = useNavigate();
   console.log(cardData);
 
   const cards = cardData.filter((card) => card._id === cardId);
@@ -54,7 +55,10 @@ function PopBrowse() {
 
   const deleteCard = () => {
     deleteTask({ token: userData.token, id: cardId }).then((responseData) => {
-      deleteCardContext(responseData.tasks);
+      updateCards(responseData.tasks);
+    })
+    .then(()=>{
+      navigate(appRoutes.HOME);
     });
   };
 
@@ -80,7 +84,10 @@ function PopBrowse() {
       date: selected,
     }).then((response) => {
       console.log(response.tasks);
-      updateCardContext(response.tasks);
+      updateCards(response.tasks);
+    })
+    .then(()=>{
+      navigate(appRoutes.HOME);
     });
   };
 
