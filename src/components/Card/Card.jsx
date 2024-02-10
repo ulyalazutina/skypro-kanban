@@ -12,9 +12,11 @@ import {
   CardWrapper,
   CardsItem,
 } from "./Card.styled";
+import { format } from "date-fns";
 // import { appRoutes } from "../../lib/appRoutes";
 
 function Card({ name, theme, date, cardId }) {
+  const createDate = format(new Date(date), "dd.MM.yy ");
   let color;
   switch (theme) {
     case "Web Design":
@@ -77,7 +79,7 @@ function Card({ name, theme, date, cardId }) {
                 </clipPath>
               </defs>
             </svg>
-            <CardDateText>{date}</CardDateText>
+            <CardDateText>{createDate}</CardDateText>
           </CardDate>
         </CardContent>
       </CardWrapper>
