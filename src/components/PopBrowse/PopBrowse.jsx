@@ -117,60 +117,58 @@ function PopBrowse() {
               <StatusTitle>Статус</StatusTitle>
               <StatusThemes>
                 <StatusTheme>
+                  <StatusThemeLabel>
                   <StatusThemeInput
                     type="radio"
-                    id="radio1"
                     name="status"
                     onChange={handleInputChange}
                     value="Без статуса"
                   />
-                  <StatusThemeLabel htmlFor="radio1">
                     Без статуса
                   </StatusThemeLabel>
                 </StatusTheme>
                 <StatusTheme>
+                  <StatusThemeLabel>
                   <StatusThemeInput
                     type="radio"
-                    id="radio2"
                     name="status"
                     onChange={handleInputChange}
                     value="Нужно сделать"
                   />
-                  <StatusThemeLabel htmlFor="radio2">
                     Нужно сделать
                   </StatusThemeLabel>
                 </StatusTheme>
                 <StatusTheme>
+                  <StatusThemeLabel>
                   <StatusThemeInput
                     type="radio"
-                    id="radio3"
                     name="status"
                     onChange={handleInputChange}
                     value="В работе"
                   />
-                  <StatusThemeLabel htmlFor="radio3">В работе</StatusThemeLabel>
+                  В работе
+                  </StatusThemeLabel>
                 </StatusTheme>
                 <StatusTheme>
+                  <StatusThemeLabel >
                   <StatusThemeInput
                     type="radio"
-                    id="radio4"
                     name="status"
                     onChange={handleInputChange}
                     value="Тестирование"
                   />
-                  <StatusThemeLabel htmlFor="radio4">
                     Тестирование
                   </StatusThemeLabel>
                 </StatusTheme>
                 <StatusTheme>
+                  <StatusThemeLabel >
                   <StatusThemeInput
                     type="radio"
-                    id="radio5"
                     name="status"
                     onChange={handleInputChange}
                     value="Готово"
                   />
-                  <StatusThemeLabel htmlFor="radio5">Готово</StatusThemeLabel>
+                    Готово</StatusThemeLabel>
                 </StatusTheme>
               </StatusThemes>
             </Status>

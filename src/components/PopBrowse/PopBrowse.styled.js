@@ -125,7 +125,9 @@ export const StatusTheme = styled.div`
   background-color: #94a6be;
 `;
 
-export const StatusThemeInput = styled.input``;
+export const StatusThemeInput = styled.input`
+  appearance: none;
+`;
 
 export const StatusThemeLabel = styled.label`
   font-size: 14px;

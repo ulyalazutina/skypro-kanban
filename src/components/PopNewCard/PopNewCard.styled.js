@@ -160,6 +160,7 @@ export const FormNewArea = styled.textarea`
 
 export const PopNewCardCategories = styled.div`
   margin-bottom: 20px;
+  display: grid;
 `;
 
 export const PopNewCardCategoriesText = styled(Subtitle)`
@@ -228,4 +229,8 @@ export const FormNewCreate = styled.button`
   line-height: 1;
   color: #ffffff;
   float: right;
+`;
+
+export const PopNewCardInput = styled.input`
+  appearance: none;
 `;

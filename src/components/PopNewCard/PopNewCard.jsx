@@ -23,6 +23,7 @@ import {
   PopNewCardContainer,
   PopNewCardContent,
   PopNewCardForm,
+  PopNewCardInput,
   PopNewCardTitle,
   PopNewCardWrap,
   PopNewCardWrapper,
@@ -48,7 +49,7 @@ function PopNewCard() {
       ...newTask,
       [name]: value,
     });
-    console.log(setNewTask);
+    console.log(value);
   };
 
   const addCard = async () => {
@@ -105,40 +106,38 @@ function PopNewCard() {
             <PopNewCardCategories>
               <PopNewCardCategoriesText>Категория</PopNewCardCategoriesText>
               <CategoriesThemes>
-                {/* 1) Не работает чекбокс при нажатии на лэибл */}
                 <CategoriesThemeOrange>
-                  <input
-                    type="radio"
-                    id="radio1"
-                    name="topic"
-                    onChange={handleInputChange}
-                    value="Web Design"
-                  />
-                  <CategoriesThemeLabelOrange htmlFor="radio1">
+                  <CategoriesThemeLabelOrange>
+                    <PopNewCardInput
+                      type="radio"
+                      name="topic"
+                      onChange={handleInputChange}
+                      value="Web Design"
+                    />
                     Web Design
                   </CategoriesThemeLabelOrange>
                 </CategoriesThemeOrange>
                 <CategoriesThemeGreen>
-                  <input
-                    type="radio"
-                    id="radio2"
-                    name="topic"
-                    onChange={handleInputChange}
-                    value="Research"
-                  />
-                  <CategoriesThemeLabelGreen htmlFor="radio2">
+                  <CategoriesThemeLabelGreen>
+                    <PopNewCardInput
+                      type="radio"
+                      // id={topicInputId}
+                      name="topic"
+                      onChange={handleInputChange}
+                      value="Research"
+                    />
                     Research
                   </CategoriesThemeLabelGreen>
                 </CategoriesThemeGreen>
                 <CategoriesThemePurple>
-                  <input
-                    type="radio"
-                    id="radio3"
-                    name="topic"
-                    onChange={handleInputChange}
-                    value="Copywriting"
-                  />
-                  <CategoriesThemeLabelPurple htmlFor="radio3">
+                  <CategoriesThemeLabelPurple>
+                    <PopNewCardInput
+                      type="radio"
+                      // id={topicInputId}
+                      name="topic"
+                      onChange={handleInputChange}
+                      value="Copywriting"
+                    />
                     Copywriting
                   </CategoriesThemeLabelPurple>
                 </CategoriesThemePurple>
