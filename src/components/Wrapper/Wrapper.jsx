@@ -1,11 +1,7 @@
-import { WrapperStyle } from "./Wrapper.styled";
+import { WrapperStyle } from './Wrapper.styled'
 
 function Wrapper({ children }) {
-    return (
-            <WrapperStyle>
-            {children}
-            </WrapperStyle>
-    );
+    return <WrapperStyle>{children}</WrapperStyle>
 }
 
-export default Wrapper;
+export default Wrapper
