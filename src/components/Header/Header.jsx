@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Container } from '../Common/Common.styled'
 import {
-    Checkbox,
+    // Checkbox,
     HeaderBlock,
     HeaderBtnExit,
     HeaderButton,
@@ -14,8 +14,8 @@ import {
     HeaderWrapper,
     PopUserSetMail,
     PopUserSetName,
-    PopUserSetTheme,
-    PopUserSetThemeText,
+    // PopUserSetTheme,
+    // PopUserSetThemeText,
     StyledLink,
 } from './Header.styled'
 import { appRoutes } from '../../lib/appRoutes'
@@ -60,12 +60,12 @@ function Header() {
                                 <PopUserSetMail>
                                     {userData.login}
                                 </PopUserSetMail>
-                                <PopUserSetTheme>
+                                {/* <PopUserSetTheme>
                                     <PopUserSetThemeText>
                                         Темная тема
                                     </PopUserSetThemeText>
                                     <Checkbox></Checkbox>
-                                </PopUserSetTheme>
+                                </PopUserSetTheme> */}
                                 <HeaderBtnExit>
                                     <StyledLink to={appRoutes.EXIT}>
                                         Выйти

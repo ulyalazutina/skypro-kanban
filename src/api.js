@@ -74,6 +74,11 @@ export async function addTask({
             date,
         }),
     })
+
+    if (response.status === 400) {
+        throw new Error('Пожалуйста, заполните все поля')
+    }
+
     const data = response.json()
     return data
 }

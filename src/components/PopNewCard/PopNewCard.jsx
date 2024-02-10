@@ -35,6 +35,7 @@ function PopNewCard() {
     const { userData } = useUser()
     const { cardData, updateCards } = useCard()
     const [selected, setSelected] = useState()
+    const [newCardError, setNewCardError] = useState(null)
     let navigate = useNavigate()
 
     const [newTask, setNewTask] = useState({
@@ -72,6 +73,9 @@ function PopNewCard() {
                 getTasks({ token: userData.token }).then((response) => {
                     updateCards(response.tasks)
                 })
+            })
+            .catch((error) => {
+                setNewCardError(error.message)
             })
     }
 
@@ -163,6 +167,11 @@ function PopNewCard() {
                             Создать задачу
                         </FormNewCreate>
                     </PopNewCardContent>
+                    {newCardError ? (
+                        <p style={{ color: 'red' }}>{newCardError}</p>
+                    ) : (
+                        ''
+                    )}
                 </PopNewCardBlock>
             </PopNewCardContainer>
         </PopNewCardWrap>
