@@ -94,7 +94,7 @@ function PopBrowse() {
     }
 
     let color
-    switch (cards.topic) {
+    switch (cards[0].topic) {
         case 'Web Design':
             color = '_orange'
             break
@@ -115,7 +115,7 @@ function PopBrowse() {
                     <PopBrowseContent>
                         <PopBrowseTopBlock>
                             <PopBrowseTittle>{cards[0].title}</PopBrowseTittle>
-                            <CategoriesTheme $ThemeColor={color}>
+                            <CategoriesTheme $themeColor={color}>
                                 <CategoriesThemeText>
                                     {cards[0].topic}
                                 </CategoriesThemeText>

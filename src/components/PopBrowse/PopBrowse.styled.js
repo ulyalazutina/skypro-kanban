@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { _orange } from '../Common/Common.styled'
 import { Link } from 'react-router-dom'
+import { themeStyles } from '../../lib/theme'
 
 export const PopBrowseWrap = styled.div`
     display: block;
@@ -60,6 +60,12 @@ export const ThemeDownCategories = styled.div`
     display: none;
     margin-bottom: 20px;
 `
+export const CategoriesThemeText = styled.p`
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    white-space: nowrap;
+`
 
 export const CategoriesTheme = styled.div`
     opacity: 1;
@@ -67,15 +73,18 @@ export const CategoriesTheme = styled.div`
     display: inline-block;
     width: auto;
     height: 30px;
-    padding: 5px 20px;
+    padding: 8px 20px;
     border-radius: 24px;
     margin-right: 7px;
     opacity: 0.4;
     opacity: 1 !important;
-    /* потом убрать */
-    background-color: #ffe4c2;
-    color: #ff6d00;
-    /*  */
+    background-color: ${({ $themeColor }) =>
+        themeStyles[$themeColor]?.backgroundColor || '#b4fdd1'};
+
+    ${CategoriesThemeText} {
+        color: ${({ $themeColor }) =>
+            themeStyles[$themeColor]?.color || '#06b16e'};
+    }
 `
 
 export const PopBrowseTopBlock = styled.div`
@@ -90,10 +99,6 @@ export const PopBrowseTittle = styled.h3`
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
-`
-
-export const CategoriesThemeText = styled.p`
-    ${_orange};
 `
 
 export const Status = styled.div`
