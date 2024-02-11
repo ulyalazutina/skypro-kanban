@@ -1,4 +1,3 @@
-import './App.css'
 import { GlobalStyle } from './Global.styled'
 import { Route, Routes } from 'react-router-dom'
 import { appRoutes } from './lib/appRoutes'
