@@ -1,24 +1,22 @@
-import { createContext, useState } from "react";
-import { useNavigate } from "react-router";
-import { appRoutes } from "../lib/appRoutes";
+import { createContext, useState } from 'react'
 
-export const CardContext = createContext(null);
+export const CardContext = createContext(null)
 
 export function CardProvider({ children }) {
-    let navigate = useNavigate();
-    const [cardData, setCardData] = useState([]);
+    const [cardData, setCardData] = useState([])
 
-    const getCard = (task) => {
-        setCardData(task);
-    };
-
-    const addCardContext = () => {
-        navigate(appRoutes.HOME);
-    };
+    const updateCards = (newData) => {
+        setCardData(newData)
+    }
 
     return (
-        <CardContext.Provider value={{ getCard, addCardContext, cardData, setCardData }}>
+        <CardContext.Provider
+            value={{
+                cardData,
+                updateCards,
+            }}
+        >
             {children}
         </CardContext.Provider>
-    );
+    )
 }
